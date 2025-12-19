@@ -2,6 +2,7 @@ import ListGroup from "./components/ListGroup";
 import Welcome from "./components/Welcome";
 import ProductCard from "./components/ProductCard";
 import ProductList from "./components/ProductList";
+import Counter from "./components/Counter";
 
 function App() {
   const cities = [
@@ -41,10 +42,12 @@ function App() {
 
   return (
     <>
-      <Welcome name="Warsha" age={30} />
+      {/* <Welcome name="Warsha" age={30} />
       <ListGroup ghd={cities} />
 
-      <ProductList products={products} />
+      <ProductList products={products} /> */}
+
+      <Counter />
     </>
   );
 }
