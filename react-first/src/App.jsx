@@ -4,6 +4,7 @@ import ProductCard from "./components/ProductCard";
 import ProductList from "./components/ProductList";
 import Counter from "./components/Counter";
 import Toggle from "./components/Toggle";
+import Form from "./components/Form";
 
 function App() {
   const cities = [
@@ -50,6 +51,7 @@ function App() {
 
       <Counter />
       <Toggle />
+      <Form />
     </>
   );
 }
