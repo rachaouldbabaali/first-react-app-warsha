@@ -5,6 +5,7 @@ import ProductList from "./components/ProductList";
 import Counter from "./components/Counter";
 import Toggle from "./components/Toggle";
 import Form from "./components/Form";
+import TempConverter from "./components/TempConverter";
 
 function App() {
   const cities = [
@@ -52,6 +53,8 @@ function App() {
       <Counter />
       <Toggle />
       <Form />
+
+      <TempConverter />
     </>
   );
 }
