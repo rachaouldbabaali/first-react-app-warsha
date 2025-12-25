@@ -1,32 +1,21 @@
-import { useState } from "react";
+import {  useState } from "react";
+function Counter() {
+    const [count, setCount] = useState(0);
 
-function counter() {
-    // let count = 0;
-
-    
-
-    // useState returns an array with two elements
-    // useState is a Hook that lets you add React state to function components
-    // const arr = useState(15);  // 5 is the initial value
-    // const count = arr[0]; // variable
-    // const setCount = arr[1]; // function to update variable
-
-    const [count, setCount] = useState(12);
-    function increment() {
-        // count = count + 1; // This won't work, because count is immutable
-         setCount(count + 1);  // count= count + 1
+    console.log(count);
+    const increment = () => {
+        setCount(count + 1);
     }
-    function decrement() {
+    const decrement = () => {
         setCount(count - 1);
+        console.log(count);
     }
-
     return (
         <div>
             <button onClick={decrement}>Decrement</button>
+            <h1>Counter {count}</h1>
             <button onClick={increment}>Increment</button>
-            <h1>Counter: {count}</h1>
         </div>
     );
 }
-
-export default counter;
+export default Counter;
