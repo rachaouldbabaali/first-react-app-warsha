@@ -6,6 +6,8 @@ function TodoList() {
     { id: 1, text: "Learn React", completed: false },
     { id: 2, text: "Learn JavaScript", completed: false },
   ]);
+  const [editingId, setEditingId] = useState(null);
+  const [editText, setEditText] = useState("");
 
   const addTodo = () => {
     if (input.trim()) {
@@ -26,6 +28,27 @@ function TodoList() {
     setTodos([]);
   };
 
+  const startEdit = (todo) => {
+    setEditingId(todo.id);
+    setEditText(todo.text);
+  };
+
+  const saveEdit = () => {
+    if (editText.trim()) {
+      setTodos(
+        todos.map((todo) =>
+          todo.id === editingId ? { ...todo, text: editText.trim() } : todo
+        )
+      );
+      setEditText("");
+      setEditingId(null);
+    }
+  };
+  const cancelEdit = () => {
+    setEditText("");
+    setEditingId(null);
+  };
+
   return (
     <>
       <h1>Todo List Component</h1>
@@ -41,8 +64,25 @@ function TodoList() {
         <ul>
           {todos.map((todo) => (
             <li key={todo.id}>
-              {todo.text}
-              <button onClick={() => removeTodo(todo.id)}>X</button>
+              {editingId === todo.id ? (
+                <div>
+                  <input
+                    type="text"
+                    value={editText}
+                    onChange={(e) => setEditText(e.target.value)}
+                    autoFocus
+                  />
+                  <button onClick={() => saveEdit(todo.id)}>Save</button>
+                  <button onClick={cancelEdit}>Cancel</button>
+                </div>
+              ) : (
+                /* view mode */
+                <div>
+                  {todo.text}
+                  <button onClick={() => startEdit(todo)}>Edit</button>
+                  <button onClick={() => removeTodo(todo.id)}>X</button>
+                </div>
+              )}
             </li>
           ))}
         </ul>
