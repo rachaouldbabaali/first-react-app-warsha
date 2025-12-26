@@ -8,6 +8,7 @@ import Form from "./components/Form";
 import TempConverter from "./components/TempConverter";
 import TodoList from "./components/TodoList";
 import  PureComponent  from "./components/PureComponent";
+import Ecommerce from "./components/ecommerce/Ecommerce";
 
 function App() {
   const cities = [
@@ -57,8 +58,10 @@ function App() {
       <Form />
 
       <TempConverter /> */}
-      <TodoList />
+      {/* <TodoList /> */}
       {/* <PureComponent /> */}
+
+      <Ecommerce />
     </>
   );
 }
