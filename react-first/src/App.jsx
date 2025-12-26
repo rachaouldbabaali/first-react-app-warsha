@@ -7,6 +7,7 @@ import Toggle from "./components/Toggle";
 import Form from "./components/Form";
 import TempConverter from "./components/TempConverter";
 import TodoList from "./components/TodoList";
+import  PureComponent  from "./components/PureComponent";
 
 function App() {
   const cities = [
@@ -57,7 +58,7 @@ function App() {
 
       <TempConverter /> */}
       <TodoList />
-
+      {/* <PureComponent /> */}
     </>
   );
 }

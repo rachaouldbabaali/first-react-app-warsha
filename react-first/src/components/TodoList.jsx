@@ -15,6 +15,7 @@ function TodoList() {
         ...todos,
         { id: todos.length + 1, text: input, completed: false },
       ]);
+
       setInput("");
     }
   };
@@ -50,44 +51,71 @@ function TodoList() {
   };
 
   return (
-    <>
-      <h1>Todo List Component</h1>
-      <div>
+    <div className="container mt5">
+      <h1 className="text-center mb-4">Todo List Component</h1>
+      <div className="input-group mb-4">
         <input
           type="text"
+          className="form-cpntrol"
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && addTodo()}
         />
-        <button onClick={addTodo}>Add Todo </button>
-        <button onClick={removeAllTodo}>Remove all todos</button>
-
-        <ul>
-          {todos.map((todo) => (
-            <li key={todo.id}>
-              {editingId === todo.id ? (
-                <div>
-                  <input
-                    type="text"
-                    value={editText}
-                    onChange={(e) => setEditText(e.target.value)}
-                    autoFocus
-                  />
-                  <button onClick={() => saveEdit(todo.id)}>Save</button>
-                  <button onClick={cancelEdit}>Cancel</button>
-                </div>
-              ) : (
-                /* view mode */
-                <div>
-                  {todo.text}
-                  <button onClick={() => startEdit(todo)}>Edit</button>
-                  <button onClick={() => removeTodo(todo.id)}>X</button>
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
+        <button className="btn btn-primary" onClick={addTodo}>
+          Add Todo{" "}
+        </button>
+        <button className="btn btn-warning" onClick={removeAllTodo}>
+          Remove all todos
+        </button>
       </div>
-    </>
+
+      <div className="list-group">
+        {todos.map((todo) => (
+          <li key={todo.id} className="list-group-item">
+            {editingId === todo.id ? (
+              <div className="d-flex gap-2">
+                <input
+                  type="text"
+                  className="form-control"
+                  value={editText}
+                  onChange={(e) => setEditText(e.target.value)}
+                  autoFocus
+                />
+                <button
+                  className="btn btn-success"
+                  onClick={() => saveEdit(todo.id)}
+                >
+                  Save
+                </button>
+                <button className="btn btn-secondary" onClick={cancelEdit}>
+                  Cancel
+                </button>
+              </div>
+            ) : (
+              /* view mode */
+              <div className="d-flex justify-content-between align-items-center">
+                {todo.text}
+                <div>
+                  <button
+                    className="btn btn-sm btn-outline-primary me-2"
+                    onClick={() => startEdit(todo)}
+                  >
+                    
+                    <i className="bi bi-pencil"></i>
+                  </button>
+                  <button
+                    className="btn btn-sm btn-outline-danger me-2"
+                    onClick={() => removeTodo(todo.id)}
+                  >
+                    <i className="bi bi-trash"></i>
+                  </button>
+                </div>
+              </div>
+            )}
+          </li>
+        ))}
+      </div>
+    </div>
   );
 }
 export default TodoList;
